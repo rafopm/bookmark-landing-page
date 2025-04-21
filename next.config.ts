@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+// next.config.js
+const isProd = process.env.NODE_ENV === 'production';
+const repoName = 'bookmark-landing-page'; 
 
-const nextConfig: NextConfig = {
-  /* config options here */
+module.exports = {
+  assetPrefix: isProd ? `/${repoName}/` : '',
+  basePath: isProd ? `/${repoName}` : '',
+  images: {
+    unoptimized: true,  
+  },
 };
-
-export default nextConfig;
