@@ -1,0 +1,59 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .filter-darkGray {
+    filter: invert(68%) sepia(10%) saturate(22%) hue-rotate(329deg) brightness(91%) contrast(96%);
+  }
+  
+  .lg\:filter-darkGray {
+    filter: invert(68%) sepia(10%) saturate(22%) hue-rotate(329deg) brightness(91%) contrast(96%);
+  }
+}
+
+:root {
+  --color-dark-gray: hsl(0, 0%, 63%);
+  --color-black: hsl(0, 0%, 0%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-very-dark-gray: hsl(0, 0%, 27%);
+
+  --font-family-primary: 'Rubik', sans-serif;
+  --font-size-base: 18px;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+
+  --container-max-width: 1440px;
+  --mobile-width: 375px;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  background-color: var(--color-white);
+  margin: 0;
+  padding: 0;
+
+}
+
+ 
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+ 
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+.filter-white {
+  filter: invert(1);
+}
+
+.filter-darkGray {
+  filter: invert(68%) sepia(10%) saturate(22%) hue-rotate(329deg) brightness(91%) contrast(96%);
+}
