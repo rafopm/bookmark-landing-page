@@ -6,6 +6,7 @@ declare global {
           name?: string;
           size?: string;
           color?: string;
+          
         },
         HTMLElement
       >;
