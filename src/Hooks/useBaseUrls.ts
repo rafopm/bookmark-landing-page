@@ -7,7 +7,7 @@ export default function useBaseUrl() {
     
     useEffect(() => {
         if (window.location.origin === 'https://rafopm.github.io') {
-            setBaseUrl('https://rafopm.github.io/room-homepage')
+            setBaseUrl('https://rafopm.github.io/bookmark-landing-page/')
         } else {
             setBaseUrl(window.location.origin)
         }
