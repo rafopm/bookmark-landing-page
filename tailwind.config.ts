@@ -9,11 +9,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        darkGray: "var(--color-dark-gray)",
+        softBlue: "var(--color-soft-blue)",
+        softRed: "var(--color-soft-red)",
+        grayishBlue: "var(--color-grayish-blue)",
+        veryDarkBlue: '--color-very-dark-blue',
+
         black: "var(--color-black)",
         white: "var(--color-white)",
-        veryDarkGray: "var(--color-very-dark-gray)",
-        
+
+
       },
       fontFamily: {
         primary: "var(--font-family-primary)",

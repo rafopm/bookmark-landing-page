@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 @layer utilities {
   .filter-darkGray {
@@ -14,10 +14,13 @@
 }
 
 :root {
-  --color-dark-gray: hsl(0, 0%, 63%);
+  --color-soft-blue: hsl(231, 69%, 60%);
+  --color-soft-red: hsl(0, 94%, 66%);
+  --color-grayish-blue: hsl(229, 8%, 60%);
+  --color-very-dark-blue: hsl(229, 31%, 21%);
+
   --color-black: hsl(0, 0%, 0%);
   --color-white: hsl(0, 0%, 100%);
-  --color-very-dark-gray: hsl(0, 0%, 27%);
 
   --font-family-primary: 'Rubik', sans-serif;
   --font-size-base: 18px;
@@ -41,7 +44,7 @@ body {
  
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
  
 }
 
