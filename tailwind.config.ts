@@ -12,12 +12,10 @@ export default {
         softBlue: "var(--color-soft-blue)",
         softRed: "var(--color-soft-red)",
         grayishBlue: "var(--color-grayish-blue)",
-        veryDarkBlue: '--color-very-dark-blue',
+        veryDarkBlue: "var(--color-very-dark-blue)",
 
         black: "var(--color-black)",
         white: "var(--color-white)",
-
-
       },
       fontFamily: {
         primary: "var(--font-family-primary)",
@@ -29,7 +27,6 @@ export default {
         medium: "var(--font-weight-medium)",
         semibold: "var(--font-weight-semibold)",
         bold: "var(--font-weight-bold)",
-
       },
       letterSpacing: {
         'n5': '-0.072em',

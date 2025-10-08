@@ -8,21 +8,31 @@ const Nav = () => {
 
     useEffect(() => {
         console.log('Estado del menú:', openMenu);
+
+        if (openMenu) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
     }, [openMenu]);
 
     return (
-        <div className='absolute z-10  w-full lg:flex lg:items-center lg:mt-[50px] lg:ml-[60px] lg:mr-[60px] lg:max-w-[calc(100%-120px)]'>
-            <div className={`relative px-[27px] lg:px-0 mt-[33px] lg:mt-0 text-white flex flex-row items-center   lg:w-auto  ${openMenu ? 'hidden' : 'block'}`}>
-                <span className='relative w-full '>
-                    <img
-                        className='h-[24px] w-[130px] cursor-pointer  hover:opacity-80 transition-opacity'
-                        src={`${baseUrl}/images/logo-bookmark.svg`}
-                        alt="Logo Bookmark"
-                    />
-                </span>
+        <nav className="fixed top-0 left-0 w-full z-50 flex justify-center">
+            {/* Header fijo con logo y botón hamburguesa */}
+            <div className={`fixed top-[27px] w-full max-w-[calc(100%-54px)] lg:px-0 lg:py-0 text-white flex flex-row justify-between items-center bg-transparent lg:bg-transparent lg:mt-[50px] lg:ml-[60px] lg:mr-[60px] lg:max-w-[calc(100%-120px)] lg:relative ${openMenu ? 'hidden lg:flex' : 'flex'
+                }`}>
+                <img
+                    className='h-[24px] w-[130px] cursor-pointer hover:opacity-80 transition-opacity'
+                    src={`${baseUrl}/images/logo-bookmark.svg`}
+                    alt="Logo Bookmark"
+                />
 
                 <button
-                    className='focus:outline-none lg:hidden border-0 bg-transparent'
+                    className='focus:outline-none lg:hidden border-0 bg-transparent z-60'
                     onClick={(e) => {
                         console.log('Botón hamburguesa pulsado');
                         e.stopPropagation();
@@ -36,49 +46,77 @@ const Nav = () => {
                         alt="Abrir menú"
                     />
                 </button>
-
             </div>
-            <div
-                className={`absolute bg-black inset-0 h-screen z-50 lg:bg-transparent px-[24px] lg:items-center w-full lg:w-auto mt-0   flex flex-row h-[110px] lg:h-auto items-center transition-all duration-300 ease-in-out ${openMenu ? 'block' : 'hidden'} lg:block lg:relative`}
-            >
-               
-                <ul className='flex flex-col  lg:flex-row gap-[24px] lg:gap-[30px] font-semibold lg:font-bold text-white  text-[16px] lg:text-[15px] lg:ml-[30px]'>
+
+            {/* Menú móvil - con ancho específico */}
+            {openMenu && (
+                <div className="fixed top-0 right-0 h-full w-full max-h-full max-w-full bg-[#1f2937] z-50 flex flex-col items-start justify-start lg:hidden">
+                    {/* Usar bg-[#1f2937] como color temporal */}
+
+                    {/* Header del menú móvil */}
+                    <div className="w-full flex justify-between items-center mb-10 px-4">
+                        <img
+                            className='h-[24px] w-[130px] cursor-pointer hover:opacity-80 transition-opacity'
+                            src={`${baseUrl}/images/logo-bookmark.svg`}
+                            alt="Logo Bookmark"
+                        />
+                        <button
+                            className='focus:outline-none h-8 w-8 flex items-center justify-center  rounded-lg hover:bg-white/20 transition-colors'
+                            onClick={(e) => {
+                                console.log('Botón cerrar pulsado');
+                                e.stopPropagation();
+                                setOpenMenu(false);
+                            }}
+                            aria-label="Cerrar menú"
+                        >
+                            <img
+                                className='h-4 w-4 cursor-pointer'
+                                src={`${baseUrl}/images/icon-close.svg`}
+                                alt="Cerrar menú"
+                            />
+                        </button>
+                    </div>
+
+                    {/* Lista de navegación móvil */}
+                    <ul className="flex flex-col gap-8 w-full text-white text-lg font-light uppercase tracking-wider px-4">
+                        <li className="relative group border-b border-gray-600/50 pb-4">
+                            <span className="relative z-10 hover:cursor-pointer block">home</span>
+                        </li>
+                        <li className="relative group border-b border-gray-600/50 pb-4">
+                            <span className="relative z-10 hover:cursor-pointer block">shop</span>
+                        </li>
+                        <li className="relative group border-b border-gray-600/50 pb-4">
+                            <span className="relative z-10 hover:cursor-pointer block">about</span>
+                        </li>
+                        <li className="relative group border-b border-gray-600/50 pb-4">
+                            <span className="relative z-10 hover:cursor-pointer block">contact</span>
+                        </li>
+                    </ul>
+                </div>
+            )}
+
+            {/* Menú desktop */}
+            <div className="hidden lg:flex lg:items-center lg:absolute lg:right-0 lg:top-1/2 lg:transform lg:-translate-y-1/2">
+                <ul className="flex flex-row gap-[30px] font-bold text-white text-[15px] ml-[30px]">
                     <li className="relative group">
                         <span className="relative z-10 hover:cursor-pointer">home</span>
-                        <span className="absolute bottom-0 left-0 w-0 h-[2px]  bg-very-dark-blue transition-all duration-300 group-hover:w-full"></span>
+                        <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                     </li>
                     <li className="relative group">
                         <span className="relative z-10 hover:cursor-pointer">shop</span>
-                        <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-very-dark-blue transition-all duration-300 group-hover:w-full"></span>
+                        <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                     </li>
                     <li className="relative group">
                         <span className="relative z-10 hover:cursor-pointer">about</span>
-                        <span className="absolute bottom-0 left-0 w-0 h-[2px]  transition-all duration-300 group-hover:w-full"></span>
+                        <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                     </li>
                     <li className="relative group">
-                        <span className="relative z-10 hover:cursor-pointer">contact</span>
-                        <span className="absolute bottom-0 left-0 w-0 h-[2px]   transition-all duration-300 group-hover:w-full"></span>
+                        <span className="relative z-10 hover-cursor-pointer">contact</span>
+                        <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                     </li>
                 </ul>
-
-                <button
-                    className='focus:outline-none lg:hidden h-[16px] w-[16px] ml-[56px]  border-0 bg-transparent'
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setOpenMenu(false);
-                    }}
-                    aria-label="Cerrar menú"
-                >
-                    <img
-                        className='h-full w-full cursor-pointer hover:opacity-80 transition-opacity'
-                        src={`${baseUrl}/images/icon-close.svg`}
-                        alt="Cerrar menú"
-                    />
-                </button>
             </div>
-
-
-        </div>
+        </nav>
     )
 }
 

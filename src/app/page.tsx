@@ -1,11 +1,11 @@
 'use client'
-import Icon from "../components/Icon";
+import Hero from "@/components/home/Hero";
 
 export default function Home() {
   return (
     <div>
-      Hello  
-      <Icon icon="home" size={20} color="red" />;
+      <Hero />
+
     </div>
   );
 }
