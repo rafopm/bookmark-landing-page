@@ -126,12 +126,12 @@
   --breakpoint-desktop: 1440px;
   
   /* Espaciado */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
+  --spacing-custom-xs: 0.5rem;
+  --spacing-custom-sm: 1rem;
+  --spacing-custom-md: 1.5rem;
+  --spacing-custom-lg: 2rem;
+  --spacing-custom-xl: 3rem;
+  --spacing-custom-2xl: 4rem;
   
   /* Border radius */
   --radius-sm: 0.25rem;
