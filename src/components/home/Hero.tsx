@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import Icon from '../Icon'
 import useBaseUrl from '@/Hooks/useBaseUrls'
 
 const Hero: NextPage = () => {

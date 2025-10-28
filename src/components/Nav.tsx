@@ -1,6 +1,6 @@
 'use client'
 import useBaseUrl from '@/Hooks/useBaseUrls'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 const Nav = () => {
     const baseUrl = useBaseUrl();
