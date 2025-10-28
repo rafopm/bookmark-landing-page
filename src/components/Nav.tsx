@@ -37,7 +37,7 @@ const Nav = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Clases condicionales para el nav - SIN ocultar, solo cambia la posición
+    // Clases condicionales para cambiar la posición
     const navClasses = `
         fixed w-full z-50 flex justify-center transition-all duration-300 ease-in-out
         ${isAtTop ? 'top-8' : 'top-0'}

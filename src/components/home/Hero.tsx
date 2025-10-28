@@ -25,11 +25,11 @@ const Hero: NextPage = () => {
 
         {/* Contenedor del texto y botones - 50% del ancho */}
         <div className='w-full lg:w-1/2 max-w-md text-center lg:text-left lg:max-w-[550px] lg:pl-20'>
-          <h1 className='text-custom-3xl leading-[40px] lg:text-custom-4xl font-bold text-very-dark-blue mb-4 lg:mb-8 pt-4'>
+          <h1 className='text-custom-3xl leading-[40px] tracking-wide   lg:text-custom-4xl font-bold text-very-dark-blue mb-4 lg:mb-8 pt-4'>
             A Simple Bookmark Manager
           </h1>
 
-          <p className='text-custom-sm leading-[25px] px-12 text-grayish-blue  mb-6 lg:text-custom-base lg:px-0 lg:mb-8 lg:pr-0'>
+          <p className='text-custom-sm leading-[25px] px-10 tracking-wide text-grayish-blue  mb-6 lg:text-custom-base lg:px-0 lg:mb-8 lg:pr-0'>
             A clean and simple interface to organize your favourite websites. Open a new browser tab and see your sites load instantly. Try it for free.
           </p>
 
