@@ -1,11 +1,13 @@
 'use client'
 import useBaseUrl from '@/Hooks/useBaseUrls'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const Nav = () => {
     const baseUrl = useBaseUrl();
     const [openMenu, setOpenMenu] = useState(false);
     const [isAtTop, setIsAtTop] = useState(true);
+    const [isFixed, setIsFixed] = useState(false);
+    const lastScrollY = useRef(0);
 
     useEffect(() => {
         console.log('Estado del menú:', openMenu);
@@ -25,31 +27,47 @@ const Nav = () => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             
-            // Simplemente verificamos si estamos en el top o no
+            // Determinar si estamos en el top
             if (currentScrollY === 0) {
                 setIsAtTop(true);
+                setIsFixed(false);
             } else {
                 setIsAtTop(false);
+                
+                // Activar fixed solo cuando scrolleamos hacia arriba
+                // o cuando pasamos un cierto threshold
+                if (currentScrollY < lastScrollY.current || currentScrollY > 100) {
+                    setIsFixed(true);
+                } else {
+                    setIsFixed(false);
+                }
             }
+            
+            lastScrollY.current = currentScrollY;
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // Llamar una vez al montar para establecer el estado inicial
+        handleScroll();
+        
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Clases condicionales para cambiar la posición
+    // Clases condicionales para cambiar la posición y comportamiento
     const navClasses = `
-        fixed w-full z-50 flex justify-center transition-all duration-300 ease-in-out
-        ${isAtTop ? 'top-8' : 'top-0'}
+        w-full z-50 flex justify-center transition-all duration-300 ease-in-out
+        ${isFixed ? 'fixed top-0 shadow-md' : 'absolute'}
+        ${isAtTop ? 'top-8' : ''}
         lg:px-4 py-2 bg-white
     `;
 
     return (
         <>
-            {/* Nav principal fixed */}
+            {/* Nav principal */}
             <nav className={navClasses}>
                 {/* Contenedor principal con justify-between */}
-                <div className="flex justify-between items-center w-full max-w-full px-[27px] lg:px-0  lg:max-w-[1100px]">
+                <div className="flex justify-between items-center w-full max-w-full px-[27px] lg:px-0 lg:max-w-[1100px]">
 
                     {/* Logo - siempre visible */}
                     <div className="flex items-center">
@@ -66,25 +84,25 @@ const Nav = () => {
                         <div className="hidden lg:flex ">
                             <ul className="flex flex-row items-center gap-10 font-light text-very-dark-blue text-[13px] tracking-wide">
                                 <li className="relative group">
-                                    <span className="relative z-10 hover:cursor-pointer   hover:text-soft-red transition-colors duration-200 font-light">
+                                    <span className="relative z-10 hover:cursor-pointer hover:text-soft-red transition-colors duration-200 font-light">
                                         FEATURES
                                     </span>
                                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-soft-red transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                                 <li className="relative group">
-                                    <span className="relative z-10 hover:cursor-pointer  hover:text-soft-red transition-colors duration-200 font-light">
+                                    <span className="relative z-10 hover:cursor-pointer hover:text-soft-red transition-colors duration-200 font-light">
                                         PRICING
                                     </span>
                                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-soft-red transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                                 <li className="relative group">
-                                    <span className="relative z-10 hover:cursor-pointer  hover:text-soft-red transition-colors duration-200 font-light">
+                                    <span className="relative z-10 hover:cursor-pointer hover:text-soft-red transition-colors duration-200 font-light">
                                         CONTACT
                                     </span>
                                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-soft-red transition-all duration-300 group-hover:w-full"></span>
                                 </li>
                                 <li className="relative group ml-4">
-                                    <button className="btn btn-secondary  hover:cursor-pointer px-7 py-2 text-white hover:bg-white hover:text-soft-red border-2 border-soft-red transition-all duration-200 font-medium">
+                                    <button className="btn btn-secondary hover:cursor-pointer px-7 py-2 text-white hover:bg-white hover:text-soft-red border-2 border-soft-red transition-all duration-200 font-medium">
                                         LOGIN
                                     </button>
                                 </li>
